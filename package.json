@@ -1,0 +1,21 @@
+{
+  "name": "jesus",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "dev": "node --watch index.js",
+    "start": "node index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/RNB-CLUB/Jesus.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/RNB-CLUB/Jesus/issues"
+  },
+  "homepage": "https://github.com/RNB-CLUB/Jesus#readme"
+}
