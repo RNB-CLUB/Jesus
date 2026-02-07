@@ -7,20 +7,21 @@ const { json } = require("stream/consumers")
 let dataPath = path.join(__dirname, "data")
 
 let server = http.createServer((req, res) => {
+    res.setHeader("Access-Control-Allow-Origin", "*")
     switch (req.url) {
         case "/jokes":
             if (req.method == "GET") getJokes(req, res)
             if (req.method == "POST") addJoke(req, res)
             break
         default:
-            if(req.url.startsWith("/like") && req.method == "GET"){
+            if (req.url.startsWith("/like") && req.method == "GET") {
                 let params = url.parse(req.url, true).query
                 let id = params.id
                 like(id)
                 res.end()
                 return
             }
-            if(req.url.startsWith("/dislike") && req.method == "GET"){
+            if (req.url.startsWith("/dislike") && req.method == "GET") {
                 let params = url.parse(req.url, true).query
                 let id = params.id
                 dislike(id)
@@ -57,7 +58,7 @@ function getJokes(req, res) {
 function addJoke(req, res) {
     let data = ""
     req.on("data", chunk => data += chunk)
-    req.on("end", ()=>{
+    req.on("end", () => {
         data = JSON.parse(data)
         data.likes = 0
         data.dislikes = 0
@@ -72,27 +73,27 @@ function addJoke(req, res) {
     })
 
 }
-function like(id){
-    if(fs.existsSync(path.join(dataPath,id + ".json"))){
-        let p = path.join(dataPath,id + ".json")
+function like(id) {
+    if (fs.existsSync(path.join(dataPath, id + ".json"))) {
+        let p = path.join(dataPath, id + ".json")
         let data = fs.readFileSync(p)
         let joke = Buffer.from(data).toString()
         let obj = JSON.parse(joke)
         obj.likes = obj.likes + 1
         fs.writeFileSync(p, JSON.stringify(obj))
-    }else{
+    } else {
         return null
     }
 }
-function dislike(id){
-    if(fs.existsSync(path.join(dataPath,id + ".json"))){
-        let p = path.join(dataPath,id + ".json")
+function dislike(id) {
+    if (fs.existsSync(path.join(dataPath, id + ".json"))) {
+        let p = path.join(dataPath, id + ".json")
         let data = fs.readFileSync(p)
         let joke = Buffer.from(data).toString()
         let obj = JSON.parse(joke)
         obj.dislikes = obj.dislikes + 1
         fs.writeFileSync(p, JSON.stringify(obj))
-    }else{
+    } else {
         return null
     }
 }

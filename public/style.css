@@ -1,0 +1,106 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root {
+    --primary-100: #FF80AB;
+    --primary-200: #de638e;
+    --primary-300: #951950;
+    --accent-100: #FF4081;
+    --accent-200: #ffe4ff;
+    --text-100: #FFFFFF;
+    --text-200: #e0e0e0;
+    --bg-100: #FFD9E6;
+    --bg-200: #f5cfdc;
+    --bg-300: #cca7b4;
+}
+
+body {
+    font-family: "Funnel Display", sans-serif;
+    background-color: var(--bg-100);
+    color: var(--text-100);
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+}
+
+header {
+    background-color: var(--primary-100);
+    color: var(--bg-200);
+    padding: 1rem;
+    margin: 1rem;
+    border-radius: 1rem;
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+header .logo {
+    height: 4rem;
+}
+
+main {
+    background-color: var(--primary-300);
+    flex-grow: 1;
+    margin: 1rem;
+    padding: 1rem;
+    border-radius: 1rem;
+    display: flex;
+    flex-direction: column;
+}
+
+.jokes {
+    flex-grow: 1;
+    max-height: 63vh;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 0.5rem;
+    padding-top: 0.5rem;
+    padding-bottom: 0.5rem;
+}
+
+form {
+    display: flex;
+    gap: 0.3rem;
+}
+
+form input {
+    flex-grow: 1;
+    border: none;
+    background-color: var(--bg-100);
+    padding: 0.5rem;
+    border-radius: 1rem;
+}
+
+form button {
+    border: none;
+    padding: 1rem;
+    border-radius: 1rem;
+    cursor: pointer;
+}
+
+.joke {
+    background-color: rgba(0, 0, 0, 0.2);
+    padding: 0.5rem;
+    border-radius: 0.5rem;
+    color: var(--bg-100);
+}
+
+.jokes .buttons {
+    display: flex;
+    justify-content: space-around;
+    padding-top: 0.3rem;
+    align-items: center;
+}
+
+.joke button {
+    border: none;
+    background-color: rgba(0, 0, 0, 0.2);
+    border-radius: 50%;
+    width: 2rem;
+    height: 2rem;
+    cursor: pointer;
+}
